@@ -1,0 +1,58 @@
+// triangulo.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "ejemplotriangulo.h"
+
+using namespace std;
+
+void main()
+{
+	ejemplotriangulo t1(10,5);
+	cout<<"el area del triangulo es: "<<t1.area();
+	getch();
+}
+
+
+
+
+
+
+#include "StdAfx.h"
+#include "ejemplotriangulo.h"
+
+
+ejemplotriangulo::ejemplotriangulo(float _altura, float _base)
+{
+	altura= _altura;
+	base= _base;
+
+}
+
+float ejemplotriangulo::area ()
+{
+	float aux;
+	aux=(altura*base)/2;
+	return aux;
+}
+ejemplotriangulo::~ejemplotriangulo(void)
+{
+}
+
+
+
+
+#pragma once
+class ejemplotriangulo
+{
+private:
+	float altura;
+	float base;
+
+public:
+	ejemplotriangulo(float _altura, float _base);
+	~ejemplotriangulo(void);
+    float area ();
+};
