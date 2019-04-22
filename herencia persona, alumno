@@ -1,0 +1,168 @@
+#pragma once
+#include <string>
+#include "persona.h"
+#include <iostream>
+
+using namespace std;
+
+class alumno :   public persona
+{
+	private:
+		string codigo;
+		 int nota;
+	public:
+		alumno(string nombre , int edad , string codigo, int nota);
+		void MostrarAlumno ();
+		
+};
+
+#include "StdAfx.h"
+#include "alumno.h"
+#include <iostream>
+#include "alumno.h"
+#include <string>
+
+using namespace std;
+
+
+alumno::alumno( string _nombre, int _edad, string _codigo, int _nota):persona(_nombre, _edad)
+{
+	codigo = _codigo;
+	nota = _nota;
+}
+void alumno::MostrarAlumno ()
+{
+	mostrarPersona ();
+	cout<<"el codigo de elumno es: "<<codigo<<endl;
+	cout<<"la nota final es: "<<nota<<endl;
+
+}
+#pragma once
+
+#include <iostream>
+using namespace std;
+
+class persona
+{
+	private:
+		string nombre;
+		int edad;
+	public:
+		persona(string, int);
+		void mostrarPersona();
+		void setNombre( string );
+		string getNombre();
+};
+#include "StdAfx.h"
+#include "persona.h"
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+persona::persona(string n, int e)
+{
+	nombre = n;
+	edad = e;
+}
+
+void persona::mostrarPersona()
+{
+	cout<<"Nombre : "<<nombre<<endl;
+	cout<<"Edad : "<<edad<<endl;
+}
+
+void persona::setNombre( string nom )
+{
+	nombre = nom;
+}
+
+string persona::getNombre()
+{
+	return nombre;
+}
+#include "stdafx.h"
+#include "persona.h"
+#include "alumno.h"
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void main()
+{
+	string n,codigo;
+	int e,nota;
+
+	cout<<"ingrese su nombre: ";
+	cin>>n;
+	cout<<"ingrese su edad: ";
+	cin>>e;
+	cout<<"el codigo de alumno es";
+	cin>>codigo;
+	cout<<"la nota final del alumno es:";
+		cin>>nota;
+	persona p(n,e);
+	alumno A1(n, e, codigo, nota);
+	A1.MostrarAlumno();
+	p.mostrarPersona();
+	
+
+
+	system("pause");
+}
+
+#include <iostream>
+
+
+using namespace std;
+
+class Persona{
+	//Atributos
+	private:
+		string nombre;
+		int edad;
+	//Métodos
+	public:
+		Persona(string,int);
+		void mostrarPersona();
+};
+
+class Alumno: public Persona{
+	//Atributos
+	private:
+		string codigoAlumno;
+		float notaFinal;
+	//Métodos
+	public:
+		Alumno(string, int, string, float);
+		void mostrarAlumno();
+};
+
+Alumno::Alumno(string _nombre, int _edad, string _codigoAlumno, float _notaFinal):Persona(_nombre, _edad){
+	codigoAlumno = _codigoAlumno;
+	notaFinal = _notaFinal;
+}
+
+void Alumno::mostrarAlumno(){
+	mostrarPersona();
+	cout<<"Codigo Alumno: "<<codigoAlumno<<endl;
+	cout<<"Nota Final: "<<notaFinal<<endl;
+}
+
+Persona::Persona( string _nombre, int _edad ){
+	nombre = _nombre;
+	edad = _edad;
+}
+
+void Persona::mostrarPersona(){
+	cout<<"Nombre: "<<nombre<<endl;
+	cout<<"Edad: "<<edad<<endl;
+}
+
+int main(){
+	Alumno Alumno1("Wilson", 45, "2525365", 69.5 );
+	Alumno1.mostrarAlumno();
+	
+}
