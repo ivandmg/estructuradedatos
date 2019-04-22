@@ -1,0 +1,63 @@
+ejercicio 2:
+#pragma once
+#define MAX 100
+class mayor
+{
+private:
+	float v[MAX],n;
+public:
+	mayor(void);
+	~mayor(void);
+	void cargar(float n,float v[]);
+	float maximo (float n, float v[]);
+};
+#include "StdAfx.h"
+#include <iostream>
+#include "mayor.h"
+
+using namespace std;
+
+
+mayor::mayor(void)
+{
+
+}
+
+
+mayor::~mayor(void)
+{
+}
+void mayor::cargar(float n,float v[])
+{
+	for (int i=0;i<n;i++)
+	cin>>v[i];
+}
+float mayor::maximo (float n, float v[])
+{
+	float aux=0;
+
+		for (int j=0;j<n-1;j++){
+			if(v[j]<v[j+1])
+				 aux=v[j];
+		}
+	return aux;
+}
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "mayor.h"
+#define MAX 100
+
+using namespace std;
+
+void main()
+{
+	float tam, v[MAX];
+	mayor n;
+	cout<<"ingrese el tamaño del vector: ";
+	cin>>tam;
+	n.cargar(tam,v);
+	cout<<n.maximo(tam,v)<<endl;
+	getch();
+}
