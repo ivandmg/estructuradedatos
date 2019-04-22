@@ -1,0 +1,191 @@
+#pragma once
+#define MAX 30
+class matriz
+{
+private:
+	int c1,c2,n1,n2;
+	int m1[MAX][MAX],m2[MAX][MAX],mr[MAX][MAX];
+public:
+	matriz(int c1,int n1,int n2,int c2);
+	void cargarm();
+	void mostrarm();
+	void transpuesta();
+	void sumarmat();
+	void multiplicarmat();
+};
+
+
+#include "StdAfx.h"
+#include "matriz.h"
+#include <iostream>
+using namespace std;
+
+
+matriz::matriz(int _c1,int _n1,int _c2, int _n2)
+{
+	c1=_c1;
+	n1=_n1;
+	c2=_c2;
+	n2=_n2;
+}
+void matriz::cargarm()
+{
+	cout<<"ingrese su primer matriz: "<<endl;
+	for (int i=0;i<n1;i++)
+	{
+		for(int j=0;j<c1;j++)
+		{
+			cin>>m1[i][j];
+		}
+		
+	}
+cout<<"ingrese su segunda matriz: "<<endl;
+	for (int i=0;i<n2;i++)
+	{
+		for(int j=0;j<c2;j++)
+		{
+			cin>>m2[i][j];
+		}
+	}
+}
+void matriz::mostrarm()
+{
+	cout<<"su primer matriz: "<<endl;
+	for (int i=0;i<n1;i++)
+	{
+		for(int j=0;j<c1;j++)
+		{
+			cout<<m1[i][j];
+		}
+		cout<<endl;
+	}
+	cout<<"su segunda matriz: "<<endl;
+		for (int i=0;i<n2;i++)
+	{
+		for(int j=0;j<c2;j++)
+		{
+			cout<<m2[i][j];
+		}
+		cout<<endl;
+	}
+}
+void matriz::transpuesta()
+{
+	cout<<"transpuesta de la primer matriz: "<<endl;
+	for (int i=0;i<n1;i++)
+	{
+		for(int j=0;j<c1;j++)
+		{
+			cout<<m1[j][i];
+		}
+		cout<<endl;
+	}
+	cout<<"transpuesta de la segunda matriz: "<<endl;
+	for (int i=0;i<n2;i++)
+	{
+		for(int j=0;j<c2;j++)
+		{
+			cout<<m2[j][i];
+		}
+		cout<<endl;
+	}
+}
+
+void matriz::sumarmat()
+{
+	cout<<"sumatoria de matrices"<<endl;
+	for (int i=0;i<n1;i++)
+	{
+		for(int j=0;j<c1;j++)
+		{
+			mr[i][j]=m1[i][j]+m2[i][j];
+		}
+		
+	}
+
+	for (int i=0;i<n1;i++)
+	{
+		for(int j=0;j<c1;j++)
+		{
+			cout<<mr[i][j];
+		}
+		cout<<endl;
+	}
+}
+void matriz::multiplicarmat()
+{
+	int acum=0;
+	for (int i=0;i<n1;i++)
+	{
+		for(int j=0;j<c1;j++)
+		{
+			acum=0;
+			for (int k=0;k<n1;k++)
+			{
+				acum=acum+(m1[i][j]*m2[i][j]);
+			}
+			mr[i][j]=acum;
+		}
+	}
+	for (int i=0;i<n1;i++)
+	{
+		for(int j=0;j<c1;j++)
+		{
+			cout<<mr[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+}
+
+
+void main()
+{
+	int c1,c2,n1,n2,op;
+	cout<<"ingrese el numero de filas de su primer matriz: ";
+	cin>>n1;
+	cout<<"ingrese el numero de columnas de su primer matriz: ";
+	cin>>c1;
+	cout<<"ingrese el numero de filas de su segunda matriz: ";
+	cin>>n2;
+	cout<<"ingrese el numero de columnas de su segunda matriz: ";
+	cin>>c2;
+	matriz m1(c1,n1,c2,n2);
+	do{
+		cout<<endl<<endl<<"**************M E N U ****************";
+		cout<<endl<<endl<<"1.-Cargar.";
+		cout<<endl<<"2.-Mostrar.";
+		cout<<endl<<"3.-Matriz transpuesta.";
+		cout<<endl<<"4.-Suma de matrices";
+		cout<<endl<<"5.-Multiplicacion de matrices";
+		cout<<endl<<"0.-Salir";
+		cout<<endl<<endl<<"Seleccione su opcion.: 	";
+		cin>>op;
+		switch(op){
+		case 1: 
+			m1.cargarm();
+			break;
+		case 2:
+			m1.mostrarm();
+			break;
+		case 3:
+			m1.transpuesta();
+			break;
+		case 4: 
+			if((n1==n2) && (c1==c2))
+				m1.sumarmat();
+			else
+				cout<<"no se puede sumar"<<endl;
+
+		case 5:
+			if((n1==c2) && (n2==c1))
+			{
+				m1.multiplicarmat();
+			}
+			else 
+				cout<<"no se pude multiplicar ";
+			break;
+		}
+	}while(op!=0);
+			
+	getch();
+}
