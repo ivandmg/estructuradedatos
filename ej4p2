@@ -1,0 +1,65 @@
+Ejercicio 4:
+#pragma once
+#define MAX 100
+class revertir
+{
+private:
+	float v[MAX],v2[MAX];
+	int tam;
+public:
+	revertir(void);
+	~revertir(void);
+	void cargar(float v[],int tam);
+	void revertir1(float v[],float v2[],int tam);
+
+};
+
+#include "StdAfx.h"
+#include <iostream>
+#include "revertir.h"
+
+using namespace std;
+
+
+revertir::revertir(void)
+{
+}
+
+
+revertir::~revertir(void)
+{
+}
+void revertir::cargar(float v[],int tam)
+{
+	for (int i=0;i<tam;i++)
+		cin>>v[i];
+}
+void revertir::revertir1(float v[],float v2[],int tam)
+{
+	for(int i=0;i<tam;i++)
+	{
+		v2[i]=v[tam-i-1];
+	cout<<v2[i];
+}
+}
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "revertir.h"
+#define MAX 100
+
+using namespace std;
+
+void main()
+{
+	float v[MAX],v2[MAX];
+	int tam;
+	revertir hola;
+		cout<<"ingrese el tamaño del vector";
+	cin>>tam;
+	hola.cargar(v,tam);
+	hola.revertir1(v,v2,tam);
+	getch();
+}
+
