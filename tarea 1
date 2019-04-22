@@ -1,0 +1,74 @@
+// tarea1.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "math.h"
+#include "conio.h"
+
+using namespace std;
+
+void main()
+{
+	int op,b,a,n,v[100];
+	do{
+	cout<<"-----menu-----"<<endl;
+	cout<<"1.area paralelogramo:"<<endl;
+	cout<<"2.ingresar y mostrar vector: "<<endl;
+	cout<<"3.invertir el vevctor: "<<endl;
+	cout<<"0.salir: "<<endl;
+	cout<<"ingrese su opcion: "<<endl;
+	cin>>op;
+	switch(op)
+	{
+	case 1:
+		cout<<"ingrese la base y la altura: "<<endl;
+		cin>>b;
+		cin>>a;
+		cout<<"el area es: "<<b*a<<endl;
+		break;
+	case 2:
+		cout<<"ingrese el tamaño de su vector: "<<endl;
+		cin>>n;
+		cout<<"ingrese su vector: "<<endl;
+	for(int i=0;i<n;i++)
+	{
+		cout<<"v[ "<<i<<" ]= ";
+			cin>>v[i];
+	}
+	cout<<"su vector es: "<<endl;
+	for(int i=0;i<n;i++)
+	{
+		cout<<"v[ "<<i<<" ]= "<<v[i]<<endl;
+	}
+		break;
+	case 3:
+		int x=0;
+			cout<<"ingrese el tamaño de su vector: "<<endl;
+		    cin>>n;
+		    cout<<"ingrese su vector: "<<endl;
+	for(int i=0;i<n;i++)
+	{
+		cout<<"v[ "<<i<<" ]= ";
+			cin>>v[i];
+	}
+	cout<<"su vector invertido es: "<<endl;
+		for(int i=n;i<=0;i--)
+	{
+		cout<<"v[ "<<x<<" ]= "<<v[i]<<endl;
+		x++;
+	}
+		break;
+		break;
+	case 0:
+		cout<<"salir..."<<endl;
+		break;
+	default:
+		cout<<"error"<<endl;
+		break;
+	}
+	}while(op!=0);
+
+	getch();
+}
+
