@@ -1,0 +1,154 @@
+// ej11.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "persona.h"
+#include <string>
+#include "alumno.h"
+#include "profesores.h"
+
+using namespace std;
+
+void main()
+{
+	int edad,notaf,op,sueldo,horasalmes;
+	string nombre,codigo,caracteristicas;
+	cout<<"ingrese el nombre del alumno: "<<endl;
+		getline(cin,nombre);
+		cout<<"ingrese la edad del alumno: "<<endl;
+		cin>>edad;
+		cout<<"ingrese el codigo del alumno: "<<endl;
+		cin>>codigo;
+		cout<<"ingrese la nota del alumno: "<<endl;
+		cin>>notaf;
+		persona q1(nombre,edad);
+	alumno a1(nombre,edad,codigo,notaf);
+		a1.mostraralumno();
+		cout<<"ingrese el nombre del profesor: "<<endl;
+		getline(cin,nombre);
+		cout<<"ingrese la edad del profesor: "<<endl;
+		cin>>edad;
+		cout<<"ingrese el sueldo del alumno: "<<endl;
+		cin>>sueldo;
+		cout<<"ingrese las horas al mes que trabaja:  "<<endl;
+		cin>>horasalmes;
+		cout<<"ingrese sus caracteristicas: "<<endl;
+		getline(cin,caracteristicas);
+		persona q1(nombre,edad);
+		profesores p1(nombre,edad,sueldo,horasalmes,caracteristicas);
+		p1.mostrarprofesor();
+		getch();
+}
+#include "StdAfx.h"
+#include "persona.h"
+
+
+persona::persona(string _nombre,int _edad)
+{
+	nombre=_nombre;
+	edad=_edad;
+}
+
+
+persona::~persona(void)
+{
+}
+void persona::mostrarpersona()
+{
+	cout<<"su nombre es: "<<nombre<<endl<<"su edad es: "<<edad;
+}
+#pragma once
+#include <string>
+#include <iostream>
+using namespace std;
+
+class persona
+{
+private:
+	string nombre;
+	int edad;
+public:
+	persona(string nombre,int persona);
+	~persona(void);
+	void mostrarpersona();
+
+};
+
+#include "StdAfx.h"
+#include "alumno.h"
+
+
+alumno::alumno(string _nombre,int _edad,string _codigo, int _notaf):persona(_nombre, _edad)
+{
+	codigo=_codigo;
+	notaf=_notaf;
+}
+
+
+alumno::~alumno(void)
+{
+}
+void alumno::mostraralumno()
+{
+	mostrarpersona();
+	cout<<"codigo es: "<<codigo<<endl<<"su nota final es: "<<notaf<<endl;
+}
+
+
+#pragma once
+#include <string>
+#include <iostream>
+#include "persona.h"
+using namespace std;
+class alumno: public persona
+{
+private: 
+	string codigo;
+	int notaf;
+public:
+	alumno(string nombre,int edad,string codigo, int notaf);
+	~alumno(void);
+	void mostraralumno();
+};
+
+
+#include "StdAfx.h"
+#include "profesores.h"
+
+
+profesores::profesores(string _nombre,int _edad, int _sueldo,int _horasalmes,string _caracteristicas):persona(_nombre,_edad)
+{
+	sueldo=_sueldo;
+	horasalmes=_horasalmes;
+	caracteristicas=_caracteristicas;
+}
+
+
+profesores::~profesores(void)
+{
+}
+void profesores::mostrarprofesor()
+{
+	mostrarpersona();
+	cout<<"su sueldo es: "<<sueldo<<endl<<"trabaja "<<horasalmes<<" horas al mes"<<endl<<"y es "<<caracteristicas<<endl;
+}
+
+#pragma once
+#include <string>
+#include <iostream>
+#include "persona.h"
+using namespace std;
+class profesores: public persona
+{
+private:
+	int sueldo;
+	int horasalmes;
+	string caracteristicas;
+public:
+	profesores(string nombre,int edad,int sueldo, int horasalmes,string caracteristicas);
+	~profesores(void);
+	void mostrarprofesor();
+};
+
