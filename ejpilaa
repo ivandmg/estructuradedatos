@@ -1,0 +1,102 @@
+// pilaaa.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "stdafx.h"
+#include "pila.h"
+
+using namespace std;
+
+void main()
+{
+	int n,x;
+	cout<<"ingrese el tamaño de su pila"<<endl;
+	cin>>n;
+	pila s;
+	for(int i=0;i<n;i++)
+	{
+		cin>>x;
+		s.apilar(x);
+	}
+	cout<<endl<<endl;
+	cout<<s.mostrarpila();
+
+
+
+
+system("pause");
+}
+#include "stdafx.h"
+#include <iostream>
+
+using namespace std;
+#pragma once
+class pila
+{
+private:
+	int n, p[100],tope;
+public:
+	pila(){
+		tope=-1;
+	}
+	bool pilavacia()
+	{
+		if(tope==-1){
+			return true;
+		}
+		else 
+			return false;
+	}
+	bool pilallena()
+	{
+		if(pilavacia()==false)
+		{
+			return true;
+		}
+		else 
+			return false;
+	}
+	bool apilar(int x)
+	{
+		if(tope==100-1)
+		{
+			cout<<"desbordamientod e pila";
+			return false;
+		}
+		else 
+		{
+			tope++;
+			p[tope]=x;
+			return true;
+		}
+	}
+	bool desapilar (int x)
+	{
+		if (tope==-1)
+		{
+			cout<<"no se ouede quitar elemento de una pila vacia";
+			return false;
+		}
+		else 
+		{
+			tope--;
+			return true;
+		}
+	}
+	bool mostrarpila()
+	{
+		for(int i=0;i<tope;i++)
+			cout<<p[tope-i]<<endl;
+		return true;
+	}
+
+
+
+
+};
+//cpp
+#include "stdafx.h"
+
+
+
