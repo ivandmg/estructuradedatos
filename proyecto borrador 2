@@ -1,0 +1,98 @@
+#pragma once
+class cultivo
+{
+private:
+float precio1,precio2, precio3;
+float h,p;
+public:
+cultivo(float hect, float ton);
+~cultivo(void);
+void calcular1();
+void calcular2();
+void calcular3();
+};
+///////////////////////////////cpp//////////////////////////////////
+#include &quot;StdAfx.h&quot;
+#include &quot;cultivo.h&quot;
+#include &lt;iostream&gt;
+using namespace std;
+cultivo::cultivo(float hect, float ton)
+{
+precio1=200;
+precio2=150;
+precio3=120;
+h=hect;
+p=ton;
+}
+cultivo::~cultivo(void)
+{
+}
+void cultivo::calcular1()
+{
+int n;
+n=precio1*h*p;
+cout&lt;&lt;&quot;La posible ganancia es: &quot;&lt;&lt;n&lt;&lt;&quot; $US&quot;&lt;&lt;endl;
+}
+void cultivo::calcular2()
+{
+int n;
+n=precio2*h*p;
+cout&lt;&lt;&quot;La posible ganancia es: &quot;&lt;&lt;n&lt;&lt;&quot; $US&quot;&lt;&lt;endl;
+}
+void cultivo::calcular3()
+{
+int n;
+n=precio3*h*p;
+cout&lt;&lt;&quot;La posible ganancia es: &quot;&lt;&lt;n&lt;&lt;&quot; $US&quot;&lt;&lt;endl;
+}
+
+//////////////////////////////main//////////////////////////
+#include &quot;stdafx.h&quot;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &quot;conio.h&quot;
+#include &quot;cultivo.h&quot;
+#include &lt;fstream&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+void main()
+{
+ifstream archivo;
+system(&quot;color 2E&quot;);
+string _resp;
+int r;
+float he=0, tn=0;
+cout&lt;&lt;&quot;--------Publicidad------------&quot;&lt;&lt;endl;
+cout&lt;&lt;&quot; &quot;&lt;&lt;endl;
+cout&lt;&lt;&quot;Desea ver los cultivos?&quot;&lt;&lt;endl;
+cout&lt;&lt;&quot;&gt;&quot;;cin&gt;&gt;_resp;
+if (_resp==&quot;si&quot;||_resp==&quot;SI&quot;){
+cout&lt;&lt;&quot; &quot;&lt;&lt;endl;
+cout&lt;&lt;&quot;Cultivos disponibles:&quot;&lt;&lt;endl;
+cout&lt;&lt;&quot; &quot;&lt;&lt;endl;
+cout&lt;&lt;&quot;1.Soya&quot;&lt;&lt;endl;
+cout&lt;&lt;&quot;2.Trigo&quot;&lt;&lt;endl;
+cout&lt;&lt;&quot;3.Sorgo&quot;&lt;&lt;endl;
+cout&lt;&lt;&quot; &quot;&lt;&lt;endl;
+cout&lt;&lt;&quot;Que producto desea calcular?&quot;&lt;&lt;endl;
+cout&lt;&lt;&quot;&gt;&quot;;cin&gt;&gt;r;
+cout&lt;&lt;&quot; &quot;&lt;&lt;endl;
+cout&lt;&lt;&quot;Ingrese cantidad de hectareas y posteriormente la produccion:&quot;&lt;&lt;endl;
+cout&lt;&lt;&quot;&gt;&quot;;cin&gt;&gt;he;
+cout&lt;&lt;&quot;&gt;&quot;;cin&gt;&gt;tn;
+cout&lt;&lt;&quot; &quot;&lt;&lt;endl;
+cultivo s(he,tn);
+switch(r){
+case 1: s.calcular1();
+break;
+case 2: s.calcular2();
+break;
+case 3: s.calcular3();
+break;
+}
+}
+else {
+cout&lt;&lt;&quot;Saliendo...&quot;;
+}
+getch();
+}
