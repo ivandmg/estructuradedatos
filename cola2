@@ -1,0 +1,60 @@
+#include "stdafx.h"
+#include "Cola.h"
+#include "Pila.h"
+#include <iostream>
+using namespace std;
+
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+    Cola C;
+    Pila A, B;
+
+    int n;
+    cout << "Ingrese la cantidad de elementos: ";
+    cin >> n;
+
+    for(int i = 0; i < n; ++i) {
+        int x;
+        cin >> x;
+        C.insertar(x);
+    }
+    cout << endl;
+
+    int respuesta = 0;
+
+    // VACIANDO C Y PONIENDO EN A
+    while(C.cola_vacia() == false) {
+        int temp;
+        C.eliminar(temp);
+        A.Insertar(temp);
+        respuesta++;
+    }
+
+    while(A.PilaVacia() == false) {
+        int temp;
+        A.Eliminar(temp); // metodo para extraer elemento y eliminar cima
+        B.Insertar(temp);
+    }
+
+    while(B.PilaVacia() == false) {
+        int temp;
+        B.Eliminar(temp);
+        C.insertar(temp);
+    }
+
+    cout << "Hay : " << respuesta << " elementos" << endl << endl;
+
+    for(int i = 0; i < respuesta; ++i) {
+        int temp;
+        C.eliminar(temp);
+        cout << temp << ' ';
+        C.insertar(temp);
+    }
+    cout << endl;
+
+    return 0;
+	system("pause");
+}
+
+
